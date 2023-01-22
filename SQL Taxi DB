@@ -1,0 +1,241 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema TAXI
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema TAXI
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `TAXI` DEFAULT CHARACTER SET utf8mb4 ;
+USE `TAXI` ;
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`Role`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`Role` (
+  `idRole` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(25) NULL,
+  PRIMARY KEY (`idRole`),
+  UNIQUE INDEX `idRole_UNIQUE` (`idRole` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`Users`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`Users` (
+  `idUsers` INT NOT NULL AUTO_INCREMENT,
+  `FirstName` VARCHAR(15) NOT NULL,
+  `LastName` VARCHAR(20) NOT NULL,
+  `Age` INT NOT NULL,  
+  `Role_idRole` INT NOT NULL,
+  PRIMARY KEY (`idUsers`),
+  UNIQUE INDEX `idUsers_UNIQUE` (`idUsers` ASC),
+  INDEX `fk_Users_Role1_idx` (`Role_idRole` ASC),
+  CONSTRAINT `fk_Users_Role1`
+    FOREIGN KEY (`Role_idRole`)
+    REFERENCES `TAXI`.`Role` (`idRole`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`Cars`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`Cars` (
+  `idCars` INT NOT NULL AUTO_INCREMENT,
+  `Model` VARCHAR(45) NOT NULL,
+  `Users_idUsers` INT NOT NULL,
+  `RegistrationNumber` VARCHAR(45) NOT NULL,
+  `Mileage` INT NOT NULL,
+  `Fuel` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`idCars`),
+  UNIQUE INDEX `idCars_UNIQUE` (`idCars` ASC),
+  INDEX `fk_Cars_Users_idx` (`Users_idUsers` ASC),
+  CONSTRAINT `fk_Cars_Users`
+    FOREIGN KEY (`Users_idUsers`)
+    REFERENCES `TAXI`.`Users` (`idUsers`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`Licenses`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`Licenses` (
+  `idLicenses` INT NOT NULL AUTO_INCREMENT,
+  `Number` INT NOT NULL,
+  `ExpirationDate` DATE NOT NULL,
+  `Users_idUsers` INT,
+  PRIMARY KEY (`idLicenses`),
+  UNIQUE INDEX `idLicenses_UNIQUE` (`idLicenses` ASC),
+  UNIQUE INDEX `Number_UNIQUE` (`Number` ASC),
+  INDEX `fk_Licenses_Users1_idx` (`Users_idUsers` ASC),
+  CONSTRAINT `fk_Licenses_Users1`
+    FOREIGN KEY (`Users_idUsers`)
+    REFERENCES `TAXI`.`Users` (`idUsers`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`DefaultCity`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`DefaultCity` (
+  `idDefaultCity` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idDefaultCity`),
+  UNIQUE INDEX `idDefaultCity_UNIQUE` (`idDefaultCity` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`Status`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`Status` (
+  `idStatus` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(15) NOT NULL,
+  PRIMARY KEY (`idStatus`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`Orders`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`Orders` (
+  `idOrders` INT NOT NULL AUTO_INCREMENT,
+  `Price` DOUBLE NOT NULL,
+  `DeparturePoint` VARCHAR(55) NOT NULL,
+  `DestinationPoint` VARCHAR(55) NOT NULL,
+  `DefaultCity_idDefaultCity` INT NOT NULL,
+  `Users_idUsers` INT NOT NULL,
+  `Status_idStatus` INT NOT NULL,
+  PRIMARY KEY (`idOrders`),
+  UNIQUE INDEX `idOrders_UNIQUE` (`idOrders` ASC),
+  INDEX `fk_Orders_DefaultCity1_idx` (`DefaultCity_idDefaultCity` ASC),
+  INDEX `fk_Orders_Users1_idx` (`Users_idUsers` ASC),
+  INDEX `fk_Orders_Status1_idx` (`Status_idStatus` ASC),
+  CONSTRAINT `fk_Orders_DefaultCity1`
+    FOREIGN KEY (`DefaultCity_idDefaultCity`)
+    REFERENCES `TAXI`.`DefaultCity` (`idDefaultCity`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Orders_Users1`
+    FOREIGN KEY (`Users_idUsers`)
+    REFERENCES `TAXI`.`Users` (`idUsers`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Orders_Status1`
+    FOREIGN KEY (`Status_idStatus`)
+    REFERENCES `TAXI`.`Status` (`idStatus`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`CarService`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`CarService` (
+  `idCarService` INT NOT NULL AUTO_INCREMENT,
+  `Name` VARCHAR(45) NOT NULL,
+  `Address` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idCarService`),
+  UNIQUE INDEX `idCarService_UNIQUE` (`idCarService` ASC))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`CarServiceOrders`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`CarServiceOrders` (
+  `idCarServiceOrders` INT NOT NULL AUTO_INCREMENT,
+  `ServiceName` VARCHAR(45) NOT NULL,
+  `ServiceDate` VARCHAR(45) NOT NULL,
+  `Price` DOUBLE NOT NULL,
+  `Cars_idCars` INT NOT NULL,
+  `CarService_idCarService` INT NOT NULL,
+  PRIMARY KEY (`idCarServiceOrders`),
+  UNIQUE INDEX `idCarServiceOrders_UNIQUE` (`idCarServiceOrders` ASC),
+  INDEX `fk_CarServiceOrders_Cars1_idx` (`Cars_idCars` ASC),
+  INDEX `fk_CarServiceOrders_CarService1_idx` (`CarService_idCarService` ASC),
+  CONSTRAINT `fk_CarServiceOrders_Cars1`
+    FOREIGN KEY (`Cars_idCars`)
+    REFERENCES `TAXI`.`Cars` (`idCars`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_CarServiceOrders_CarService1`
+    FOREIGN KEY (`CarService_idCarService`)
+    REFERENCES `TAXI`.`CarService` (`idCarService`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`PhoneNumbers`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`PhoneNumbers` (
+  `idPhoneNumbers` INT NOT NULL AUTO_INCREMENT,
+  `Number` VARCHAR(10) NOT NULL,
+  `Users_idUsers` INT NOT NULL,  
+  PRIMARY KEY (`idPhoneNumbers`),
+  UNIQUE INDEX `idPhoneNumbers_UNIQUE` (`idPhoneNumbers` ASC),
+  UNIQUE INDEX `Number_UNIQUE` (`Number` ASC),
+  INDEX `fk_PhoneNumbers_Users1_idx` (`Users_idUsers` ASC),  
+  CONSTRAINT `fk_PhoneNumbers_Users1`
+    FOREIGN KEY (`Users_idUsers`)
+    REFERENCES `TAXI`.`Users` (`idUsers`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+  )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`SavedDeparturePoints`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`SavedDeparturePoints` (
+  `idSavedDeparturePoints` INT NOT NULL AUTO_INCREMENT,
+  `Address` VARCHAR(45) NOT NULL,
+  `Orders_idOrders` INT NOT NULL,
+  PRIMARY KEY (`idSavedDeparturePoints`),
+  UNIQUE INDEX `idSavedDeparturePoints_UNIQUE` (`idSavedDeparturePoints` ASC),
+  INDEX `fk_SavedDeparturePoints_Orders1_idx` (`Orders_idOrders` ASC),
+  CONSTRAINT `fk_SavedDeparturePoints_Orders1`
+    FOREIGN KEY (`Orders_idOrders`)
+    REFERENCES `TAXI`.`Orders` (`idOrders`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `TAXI`.`SavedDestinationPoints`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `TAXI`.`SavedDestinationPoints` (
+  `idSavedDestinationPoints` INT NOT NULL AUTO_INCREMENT,
+  `Address` VARCHAR(45) NOT NULL,
+  `Orders_idOrders` INT NOT NULL,
+  PRIMARY KEY (`idSavedDestinationPoints`),
+  UNIQUE INDEX `idSavedDestinationPoints_UNIQUE` (`idSavedDestinationPoints` ASC),
+  INDEX `fk_SavedDestinationPoints_Orders1_idx` (`Orders_idOrders` ASC),
+  CONSTRAINT `fk_SavedDestinationPoints_Orders1`
+    FOREIGN KEY (`Orders_idOrders`)
+    REFERENCES `TAXI`.`Orders` (`idOrders`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
