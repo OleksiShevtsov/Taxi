@@ -95,7 +95,7 @@ public class CarServiceDao extends MySqlDao implements IBaseDao<CarService> {
         ps.setString(3, carService.getAddress());
 
         int result = ps.executeUpdate();
-        System.out.println("Cart with id " + carService.getId() + " was updated in DB with following details: " + carService);
+        System.out.println("Car service with id " + carService.getId() + " was updated in DB with following details: " + carService);
 
         try {
             connection.close();
