@@ -103,7 +103,7 @@ public class CarDao extends MySqlDao implements IBaseDao<Car> {
         ps.setString(6, car.getFuel());
 
         int result = ps.executeUpdate();
-        System.out.println("Cart with id " + car.getId() + " was updated in DB with following details: " + car);
+        System.out.println("Car with id " + car.getId() + " was updated in DB with following details: " + car);
 
         try {
             connection.close();
