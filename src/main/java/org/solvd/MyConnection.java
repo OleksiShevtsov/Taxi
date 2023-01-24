@@ -4,11 +4,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.util.ResourceBundle;
 
 public class MyConnection {
-    String url = "jdbc:mysql://127.0.0.1/taxi";
-    String user = "alex00987";
-    String password = "Aa200987";
+    ResourceBundle resourceBundle = ResourceBundle.getBundle("mySQL");
+    String url = resourceBundle.getString("url");
+    String user = resourceBundle.getString("user");
+    String password = resourceBundle.getString("password");
+
+//    String url = "jdbc:mysql://127.0.0.1/taxi";
+//    String user = "alex00987";
+//    String password = "Aa200987";
     //Logger logger = LogManager.getLogger(MyConnection.class);
 
     public Connection getConnection() {
