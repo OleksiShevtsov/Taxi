@@ -5,8 +5,8 @@ import java.util.Objects;
 public class Order {
     private int id;
     private double price;
-    private String DeparturePoint;
-    private String DestinationPoint;
+    private String departurePoint;
+    private String destinationPoint;
     private int idDefaultCity;
     private int idUser;
     private int idStatus;
@@ -14,8 +14,8 @@ public class Order {
     public Order(int id, double price, String departurePoint, String destinationPoint, int idDefaultCity, int idUser, int idStatus) {
         this.id = id;
         this.price = price;
-        DeparturePoint = departurePoint;
-        DestinationPoint = destinationPoint;
+        this.departurePoint = departurePoint;
+        this.destinationPoint = destinationPoint;
         this.idDefaultCity = idDefaultCity;
         this.idUser = idUser;
         this.idStatus = idStatus;
@@ -45,19 +45,19 @@ public class Order {
     }
 
     public String getDeparturePoint() {
-        return DeparturePoint;
+        return departurePoint;
     }
 
     public void setDeparturePoint(String departurePoint) {
-        DeparturePoint = departurePoint;
+        this.departurePoint = departurePoint;
     }
 
     public String getDestinationPoint() {
-        return DestinationPoint;
+        return destinationPoint;
     }
 
     public void setDestinationPoint(String destinationPoint) {
-        DestinationPoint = destinationPoint;
+        this.destinationPoint = destinationPoint;
     }
 
     public int getIdDefaultCity() {
@@ -90,13 +90,13 @@ public class Order {
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
         return id == order.id && Double.compare(order.price, price) == 0 && idDefaultCity == order.idDefaultCity &&
-                idUser == order.idUser && idStatus == order.idStatus && DeparturePoint.equals(order.DeparturePoint) &&
-                DestinationPoint.equals(order.DestinationPoint);
+                idUser == order.idUser && idStatus == order.idStatus && departurePoint.equals(order.departurePoint) &&
+                destinationPoint.equals(order.destinationPoint);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, price, DeparturePoint, DestinationPoint, idDefaultCity, idUser, idStatus);
+        return Objects.hash(id, price, departurePoint, destinationPoint, idDefaultCity, idUser, idStatus);
     }
 
     @Override
@@ -104,8 +104,8 @@ public class Order {
         return "Order{" +
                 "id=" + id +
                 ", price=" + price +
-                ", DeparturePoint='" + DeparturePoint + '\'' +
-                ", DestinationPoint='" + DestinationPoint + '\'' +
+                ", DeparturePoint='" + departurePoint + '\'' +
+                ", DestinationPoint='" + destinationPoint + '\'' +
                 ", idDefaultCity=" + idDefaultCity +
                 ", idUser=" + idUser +
                 ", idStatus='" + idStatus + '\'' +

@@ -15,7 +15,7 @@ public class MyConnection {
 //    String url = "jdbc:mysql://127.0.0.1/taxi";
 //    String user = "alex00987";
 //    String password = "Aa200987";
-    //Logger logger = LogManager.getLogger(MyConnection.class);
+    Logger logger = LogManager.getLogger(MyConnection.class);
 
     public Connection getConnection() {
         try {

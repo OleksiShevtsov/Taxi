@@ -75,7 +75,7 @@ public class UserDao extends MySqlDao implements IBaseDao<User> {
         ps.setInt(5, user.getRoleId());
 
         int result = ps.executeUpdate();
-        System.out.println("User with id " + user.getId() + " was created in DB with following details: " + user.toString());
+        System.out.println("UserTest with id " + user.getId() + " was created in DB with following details: " + user.toString());
 
         try {
             users.add(user);
@@ -100,7 +100,7 @@ public class UserDao extends MySqlDao implements IBaseDao<User> {
         ps.setInt(5, user.getRoleId());
 
         int result = ps.executeUpdate();
-        System.out.println("User with id " + user.getId() + " was updated in DB with following details: " + user);
+        System.out.println("UserTest with id " + user.getId() + " was updated in DB with following details: " + user);
 
         try {
             connection.close();
@@ -115,7 +115,7 @@ public class UserDao extends MySqlDao implements IBaseDao<User> {
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(DELETE_USER + user.getId());
-            System.out.println("User with id " + user.getId() + " was removed from the DB");
+            System.out.println("UserTest with id " + user.getId() + " was removed from the DB");
         } catch (SQLException e) {
             e.printStackTrace();
         }

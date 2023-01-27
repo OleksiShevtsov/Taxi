@@ -1,6 +1,9 @@
 package DAO;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.solvd.Car;
+import org.solvd.Main;
 import org.solvd.MyConnection;
 import org.solvd.PhoneNumber;
 
@@ -10,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class CarDao extends MySqlDao implements IBaseDao<Car> {
+    public static final Logger LOGGER = LogManager.getLogger(CarDao.class);
     private List<Car> cars;
     Connection connection;
     private final static String GET_CAR_BY_ID = "SELECT * FROM Cars WHERE idCars = ";

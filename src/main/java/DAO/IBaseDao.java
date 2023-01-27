@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IBaseDao<T> {
-   // User getById(int id) throws SQLException;
+   // UserTest getById(int id) throws SQLException;
     Optional<T> getEntityById(int id) throws SQLException;
     List<T> getAll();
     int insert(T entity) throws SQLException;

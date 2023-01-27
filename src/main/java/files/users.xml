@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<users>
+    <user id="1">
+        <firstName>Alex</firstName>
+        <lastName>Jonotan</lastName>
+        <age>23</age>
+        <roleId>1</roleId>
+        <license id="1">
+            <number>2345</number>
+            <expirationDate>13-10-2023</expirationDate>
+        </license>
+        <car id="1">
+            <model>BMW</model>
+            <registrationNumber>AA34567PP</registrationNumber>
+            <mileage>120000</mileage>
+            <fuel>gas</fuel>
+        </car>
+        <orders>
+            <order id="1">
+                <price>300</price>
+                <departurePoint>Volna str</departurePoint>
+                <destinationPoint>Volodymyrska str</destinationPoint>
+                <defaultCity id="1">
+                    <name>Kyiv</name>
+                </defaultCity>
+                <status id="2">
+                    <name>completed</name>
+                </status>
+                <savedDeparturePoint id="3">
+                    <address>Luhova str 12</address>
+                </savedDeparturePoint>
+                <savedDestinationPoint id="2">
+                    <address>Kruta str 12</address>
+                </savedDestinationPoint>
+            </order>
+            <phoneNumber id="1">
+                <number>0971234567</number>
+            </phoneNumber>
+        </orders>
+    </user>
+
+    <user id="2">
+        <firstName>Lucy</firstName>
+        <lastName>Williams</lastName>
+        <age>30</age>
+        <roleId>2</roleId>
+    </user>
+
+    <user id="3">
+        <firstName>James</firstName>
+        <lastName>Gordon</lastName>
+        <age>33</age>
+        <roleId>3</roleId>
+    </user>
+
+</users>
