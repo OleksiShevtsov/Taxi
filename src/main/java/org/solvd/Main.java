@@ -1,25 +1,14 @@
 package org.solvd;
 
-import DAO.PhoneNumberDao;
 import DAO.UserDao;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.w3c.dom.*;
-import org.w3c.dom.traversal.DocumentTraversal;
-import org.w3c.dom.traversal.NodeFilter;
-import org.w3c.dom.traversal.NodeIterator;
-import org.w3c.dom.traversal.TreeWalker;
-import org.xml.sax.SAXException;
-import xml_Parcer.UserTest;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.bind.Unmarshaller;
 import java.io.File;
-import java.io.IOException;
 import java.sql.SQLException;
 
 public class Main {
@@ -27,18 +16,27 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
 
-        UserTest testUser = new UserTest(1, "Nick", "Donovan", 33);
-
 //       // JAXB:
+        Role role = new Role(2, "Admin");
+        User user = new User(1, "John", "Bolton", 33, role);
         File file = new File("src/main/java/files/myFile.xml");
 
         try {
-            JAXBContext context = JAXBContext.newInstance(UserTest.class);
+            JAXBContext context = JAXBContext.newInstance(User.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
-            marshaller.marshal(testUser, file);
-            marshaller.marshal(testUser, System.out);
+            marshaller.marshal(user, file);
+            marshaller.marshal(user, System.out);
+
+            Unmarshaller unmarshaller = context.createUnmarshaller();;
+           User user2 = (User) unmarshaller.unmarshal(file);
+            System.out.println(user2.getId());
+            System.out.println(user2.getFirstName());
+            System.out.println(user2.getLastName());
+            System.out.println(user2.getAge());
+            System.out.println(user2.getRole());
+
         } catch (JAXBException e) {
             e.printStackTrace();
         }
@@ -78,7 +76,7 @@ public class Main {
 
 
 //       myConnection.getConnection();
-        // UserDao userDao = new UserDao();
+       //  UserDao userDao = new UserDao();
         // System.out.println(userDao.getEntityById(1));
 //        List<UserTest> list = userDao.getAll();
 //        for (UserTest e : list) {
