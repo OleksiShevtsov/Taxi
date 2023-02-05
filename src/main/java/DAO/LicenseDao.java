@@ -1,9 +1,7 @@
 package DAO;
 
-import org.solvd.CarServiceOrder;
-import org.solvd.License;
-import org.solvd.License;
-import org.solvd.MyConnection;
+import org.solvd.tableClasses.License;
+import org.solvd.tableClasses.MyConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

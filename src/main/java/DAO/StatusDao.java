@@ -1,8 +1,7 @@
 package DAO;
 
-import org.solvd.License;
-import org.solvd.MyConnection;
-import org.solvd.Status;
+import org.solvd.tableClasses.MyConnection;
+import org.solvd.tableClasses.Status;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class StatusDao extends MySqlDao implements IBaseDao<Status> {
     private final static String GET_STATUS_BY_ID = "SELECT * FROM Status WHERE idStatus = ";
     private final static String GET_ALL_STATUSES = "SELECT * FROM Status";
     private final static String INSERT_STATUS = "INSERT INTO Status " + "(idStatus, Name) VALUES (?, ?)";
-    private final static String UPDATE_STATUS = "UPDATE Status SET idStatus = ?, Name = ? WHERE idLicenses = ";
+    private final static String UPDATE_STATUS = "UPDATE Status SET idStatus = ?, Name = ? WHERE idStatus = ";
     private final static String DELETE_STATUS = "DELETE FROM Status WHERE idStatus = ";
 
     public StatusDao() {

@@ -1,8 +1,7 @@
 package DAO;
 
-import org.solvd.DefaultCity;
-import org.solvd.MyConnection;
-import org.solvd.Order;
+import org.solvd.tableClasses.MyConnection;
+import org.solvd.tableClasses.Order;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,7 +30,7 @@ public class OrderDao extends MySqlDao implements IBaseDao<Order> {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(GET_ORDER_BY_ID + id);
         while (rs.next()) {
-            order = (new Order(rs.getInt("idStatus"), rs.getDouble("Price"),
+            order = (new Order(rs.getInt("idOrders"), rs.getDouble("Price"),
                     rs.getString("DeparturePoint"), rs.getString("DestinationPoint"),
                     rs.getInt("DefaultCity_idDefaultCity"), rs.getInt("Users_idUsers"),
                     rs.getInt("Status_idStatus")));
@@ -51,7 +50,7 @@ public class OrderDao extends MySqlDao implements IBaseDao<Order> {
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(GET_ALL_ORDERS);
             while (rs.next()) {
-                orders.add(new Order(rs.getInt("idStatus"), rs.getDouble("Price"),
+                orders.add(new Order(rs.getInt("idOrders"), rs.getDouble("Price"),
                         rs.getString("DeparturePoint"), rs.getString("DestinationPoint"),
                         rs.getInt("DefaultCity_idDefaultCity"), rs.getInt("Users_idUsers"),
                         rs.getInt("Status_idStatus")));
@@ -77,7 +76,7 @@ public class OrderDao extends MySqlDao implements IBaseDao<Order> {
         ps.setString(3, order.getDeparturePoint());
         ps.setString(4, order.getDestinationPoint());
         ps.setInt(5, order.getIdDefaultCity());
-        ps.setInt(5, order.getIdUser());
+        ps.setInt(6, order.getIdUser());
         ps.setInt(7, order.getIdStatus());
 
         int result = ps.executeUpdate();
@@ -105,7 +104,7 @@ public class OrderDao extends MySqlDao implements IBaseDao<Order> {
         ps.setString(3, order.getDeparturePoint());
         ps.setString(4, order.getDestinationPoint());
         ps.setInt(5, order.getIdDefaultCity());
-        ps.setInt(5, order.getIdUser());
+        ps.setInt(6, order.getIdUser());
         ps.setInt(7, order.getIdStatus());
 
         int result = ps.executeUpdate();

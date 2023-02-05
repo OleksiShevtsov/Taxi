@@ -1,8 +1,7 @@
 package DAO;
 
-import org.solvd.DefaultCity;
-import org.solvd.MyConnection;
-import org.solvd.Status;
+import org.solvd.tableClasses.DefaultCity;
+import org.solvd.tableClasses.MyConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -29,7 +28,7 @@ public class DefaultCityDao extends MySqlDao implements IBaseDao<DefaultCity>{
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(GET_CITY_BY_ID + id);
         while (rs.next()) {
-            defaultCity = (new DefaultCity(rs.getInt("idStatus"), rs.getString("Name")));
+            defaultCity = (new DefaultCity(rs.getInt("idDefaultCity"), rs.getString("Name")));
         }
         try {
             connection.close();
@@ -46,7 +45,7 @@ public class DefaultCityDao extends MySqlDao implements IBaseDao<DefaultCity>{
             Statement statement = connection.createStatement();
             ResultSet rs = statement.executeQuery(GET_ALL_CITIES);
             while (rs.next()) {
-                defaultCities.add(new DefaultCity(rs.getInt("idStatus"), rs.getString("Name")));
+                defaultCities.add(new DefaultCity(rs.getInt("idDefaultCity"), rs.getString("Name")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

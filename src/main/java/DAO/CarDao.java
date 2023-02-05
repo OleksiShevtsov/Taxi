@@ -2,10 +2,8 @@ package DAO;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.solvd.Car;
-import org.solvd.Main;
-import org.solvd.MyConnection;
-import org.solvd.PhoneNumber;
+import org.solvd.tableClasses.Car;
+import org.solvd.tableClasses.MyConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

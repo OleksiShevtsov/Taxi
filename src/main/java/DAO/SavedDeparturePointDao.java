@@ -1,8 +1,7 @@
 package DAO;
 
-import org.solvd.MyConnection;
-import org.solvd.PhoneNumber;
-import org.solvd.SavedDeparturePoint;
+import org.solvd.tableClasses.MyConnection;
+import org.solvd.tableClasses.SavedDeparturePoint;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,9 +1,7 @@
 package DAO;
 
-import DAO.IBaseDao;
-import DAO.MySqlDao;
-import org.solvd.MyConnection;
-import org.solvd.User;
+import org.solvd.tableClasses.MyConnection;
+import org.solvd.tableClasses.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -64,8 +62,6 @@ public class UserDao extends MySqlDao implements IBaseDao<User> {
 
     @Override
     public int insert(User user) throws SQLException {
-        //String query = "INSERT INTO Users (idUsers, FirstName, LastName, Age, Role_idRole) VALUES (?, ?, ?, ?, ?)";
-
         PreparedStatement ps = connection.prepareStatement(INSERT_USER);
 
         ps.setInt(1, user.getId());

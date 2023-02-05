@@ -1,8 +1,7 @@
 package DAO;
 
-import org.solvd.MyConnection;
-import org.solvd.SavedDeparturePoint;
-import org.solvd.SavedDestinationPoint;
+import org.solvd.tableClasses.MyConnection;
+import org.solvd.tableClasses.SavedDestinationPoint;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class SavedDestinationPointDao extends MySqlDao implements IBaseDao<Saved
     private final static String INSERT_DESTINATION_POINT = "INSERT INTO SavedDestinationPoints (idSavedDestinationPoints, Address, Orders_idOrders) " +
             "VALUES (?, ?, ?)";
     private final static String UPDATE_DESTINATION_POINT = "UPDATE SavedDestinationPoints SET idSavedDestinationPoints = ?, " +
-            "Address = ?, Orders_idOrders = ? WHERE idSavedDeparturePoints = ";
+            "Address = ?, Orders_idOrders = ? WHERE idSavedDestinationPoints = ";
     private final static String DELETE_DESTINATION_POINT = "DELETE FROM SavedDestinationPoints WHERE idSavedDestinationPoints = ";
 
     public SavedDestinationPointDao() {
@@ -26,11 +25,11 @@ public class SavedDestinationPointDao extends MySqlDao implements IBaseDao<Saved
     }
     @Override
     public Optional<SavedDestinationPoint> getEntityById(int id) throws SQLException {
-        SavedDestinationPoint savedDeparturePoint = null;
+        SavedDestinationPoint savedDestinationPoint = null;
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(GET_DESTINATION_POINT_BY_ID + id);
         while (rs.next()) {
-            savedDeparturePoint = (new SavedDestinationPoint(rs.getInt("idSavedDestinationPoints"), rs.getString("Address"),
+            savedDestinationPoint = (new SavedDestinationPoint(rs.getInt("idSavedDestinationPoints"), rs.getString("Address"),
                     rs.getInt("Orders_idOrders")));
         }
         try {
@@ -38,7 +37,7 @@ public class SavedDestinationPointDao extends MySqlDao implements IBaseDao<Saved
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return Optional.ofNullable(savedDeparturePoint);
+        return Optional.ofNullable(savedDestinationPoint);
     }
 
     @Override

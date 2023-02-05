@@ -1,8 +1,7 @@
 package DAO;
 
-import org.solvd.CarService;
-import org.solvd.CarServiceOrder;
-import org.solvd.MyConnection;
+import org.solvd.tableClasses.CarServiceOrder;
+import org.solvd.tableClasses.MyConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,9 +14,9 @@ public class CarServiceOrderDao extends MySqlDao implements IBaseDao<CarServiceO
     private final static String GET_CAR_SERVICE_ORDER_BY_ID = "SELECT * FROM CarServiceOrders WHERE idCarServiceOrders = ";
     private final static String GET_ALL_CAR_SERVICE_ORDERS = "SELECT * FROM CarServiceOrders";
     private final static String INSERT_CAR_SERVICE_ORDER = "INSERT INTO CarServiceOrders " +
-            "(idCarServiceOrders, ServiceName, ServiceDate, Price, Cars_idCars, CarService_idCarService) " + "VALUES (?, ?, ?, ?, ?)";
+            "(idCarServiceOrders, ServiceName, ServiceDate, Price, Cars_idCars, CarService_idCarService) " + "VALUES (?, ?, ?, ?, ?, ?)";
     private final static String UPDATE_CAR_SERVICE_ORDER = "UPDATE CarServiceOrders SET idCarServiceOrders = ?, ServiceName = ?, " +
-            "ServiceDate = ?, Price = ?, Cars_idCars =?, CarService_idCarService = ? WHERE idCarService = ";
+            "ServiceDate = ?, Price = ?, Cars_idCars =?, CarService_idCarService = ? WHERE idCarServiceOrders = ";
     private final static String DELETE_CAR_SERVICE_ORDER = "DELETE FROM CarServiceOrders WHERE idCarServiceOrders = ";
 
     public CarServiceOrderDao() {

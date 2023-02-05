@@ -1,0 +1,1 @@
+{"id":1,"firstName":"Jack","lastName":"Williams","age":23,"license":{"id":1,"number":3456,"expirationDate":1705960800000},"cars":[{"id":1,"model":"Volvo","fuel":"diesel","mileage":150000},{"id":2,"model":"BMW","fuel":"gasoline","mileage":119000},{"id":3,"model":"Fiat","fuel":"gas","mileage":13000}]}
