@@ -1,0 +1,44 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User">
+
+    <insert id="insert" parameterType="User">
+        INSERT INTO users (FirstName, LastName, Age, Role_idRole) VALUES (#{firstName}, #{lastName}, #{age}, #{roleId});
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+
+    <select id="getById" parameterType="int" resultMap="user_result">
+        SELECT * FROM users WHERE idUsers = #{id};
+    </select>
+
+    <select id="getAll" resultMap="user_result">
+        SELECT * FROM users;
+    </select>
+
+    <select id="join" resultMap="user_result">
+        SELECT * FROM users JOIN role on role.idRole = users.Role_idRole;
+    </select>
+
+    <update id="update" parameterType="User">
+        UPDATE users SET FirstName = #{firstName}, LastName = #{lastName}, Age = #{age}, Role_idRole = #{roleId}
+        WHERE idUsers = #{id};
+    </update>
+
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM users WHERE idUsers = #{id};
+    </delete>
+
+    <resultMap id="user_result" type="User">
+        <result property="id" column="idUsers"/>
+        <result property="firstName" column="FirstName"/>
+        <result property="lastName" column="LastName"/>
+        <result property="age" column="Age"/>
+        <result property="roleId" column="Role_idRole"/>
+        <collection property="role" resultMap="role_result"/>
+    </resultMap>
+
+</mapper>

@@ -1,4 +1,4 @@
-package parsers;
+package main.java.parsers;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 import java.sql.Date;

@@ -1,4 +1,4 @@
-package org.solvd.tableClasses;
+package main.java.org.solvd.tableClasses;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
@@ -12,6 +12,11 @@ public class Role {
 
     public Role(int id, String name) {
         this.id = id;
+        this.name = name;
+    }
+
+    public Role(String name) {
+        super();
         this.name = name;
     }
 

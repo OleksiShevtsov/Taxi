@@ -1,14 +1,18 @@
-package parsers;
+package main.java.parsers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.solvd.tableClasses.Role;
-import org.solvd.tableClasses.User;
+import main.java.org.solvd.tableClasses.Role;
+import main.java.org.solvd.tableClasses.User;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
+import main.java.org.solvd.tableClasses.Role;
+import  main.java.parsers.TestCar;
+import  main.java.parsers.TestUser;
+import  main.java.parsers.TestLicense;
 
 public class Jackson {
 

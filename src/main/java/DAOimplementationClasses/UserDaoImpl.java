@@ -1,7 +1,7 @@
 package DAOimplementationClasses;
 
-import DAO.UserDao;
-import org.solvd.tableClasses.User;
+import main.java.DAO.UserDao;
+import main.java.org.solvd.tableClasses.User;
 
 import java.sql.SQLException;
 

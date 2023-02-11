@@ -1,10 +1,8 @@
-package org.solvd.tableClasses;
+package main.java.org.solvd.tableClasses;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import parsers.TestCar;
-import parsers.TestLicense;
-import parsers.TestUser;
+
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,16 +13,16 @@ public class Main {
     public static final Logger LOGGER = LogManager.getLogger(Main.class);
 
     public static void main(String[] args) throws SQLException {
-        Role role = new Role(2, "Admin");
-        User user = new User(1, "John", "Bolton", 33, 2);
-
-        List<TestCar> cars = new ArrayList<>();
-        cars.add(new TestCar(1, "Volvo", "diesel", 150000));
-        cars.add(new TestCar(2, "BMW", "gasoline", 119000));
-        cars.add(new TestCar(3, "Fiat", "gas", 13000));
-
-        TestLicense testLicense = new TestLicense(1, 3456, new Date(123, 12, 23));
-        TestUser testUser = new TestUser(1, "Jack", "Williams", 23, testLicense, cars);
+//        Role role = new Role(2, "Admin");
+//        User user = new User(1, "John", "Bolton", 33, 2);
+//
+//        List<TestCar> cars = new ArrayList<>();
+//        cars.add(new TestCar(1, "Volvo", "diesel", 150000));
+//        cars.add(new TestCar(2, "BMW", "gasoline", 119000));
+//        cars.add(new TestCar(3, "Fiat", "gas", 13000));
+//
+//        TestLicense testLicense = new TestLicense(1, 3456, new Date(123, 12, 23));
+//        TestUser testUser = new TestUser(1, "Jack", "Williams", 23, testLicense, cars);
 
 
         // JACKSON:

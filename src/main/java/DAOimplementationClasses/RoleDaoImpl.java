@@ -1,7 +1,7 @@
-package DAOimplementationClasses;
+package main.java.DAOimplementationClasses;
 
-import DAO.RoleDao;
-import org.solvd.tableClasses.Role;
+import main.java.DAO.RoleDao;
+import main.java.org.solvd.tableClasses.Role;
 
 import java.sql.SQLException;
 

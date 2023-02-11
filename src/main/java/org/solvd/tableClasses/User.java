@@ -1,4 +1,4 @@
-package org.solvd.tableClasses;
+package main.java.org.solvd.tableClasses;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
@@ -21,6 +21,14 @@ public class User {
 
     public User(int id, String firstName, String lastName, int age, int roleId) {
         this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+        this.roleId = roleId;
+    }
+
+    public User(String firstName, String lastName, int age, int roleId) {
+        super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;

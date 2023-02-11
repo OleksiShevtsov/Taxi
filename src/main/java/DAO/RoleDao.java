@@ -1,15 +1,15 @@
-package DAO;
+package main.java.DAO;
 
 import org.solvd.tableClasses.MyConnection;
 import org.solvd.tableClasses.PhoneNumber;
-import org.solvd.tableClasses.Role;
+import main.java.org.solvd.tableClasses.Role;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class RoleDao extends MySqlDao implements IBaseDao<Role> {
+public class RoleDao extends DAO.MySqlDao implements DAO.IBaseDao<Role> {
     private List<Role> roles;
     Connection connection;
     private final static String GET_ROLE_BY_ID = "SELECT * FROM Role WHERE idRole = ";

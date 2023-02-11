@@ -1,4 +1,4 @@
-package parsers;
+package main.java.parsers;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonRootName;

@@ -1,4 +1,4 @@
-package parsers;
+package main.java.parsers;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;

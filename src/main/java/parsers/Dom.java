@@ -1,4 +1,4 @@
-package parsers;
+package main.java.parsers;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

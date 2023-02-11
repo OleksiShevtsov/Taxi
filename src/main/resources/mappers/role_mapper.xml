@@ -1,0 +1,36 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Role">
+
+    <insert id="insert" parameterType="Role">
+        INSERT INTO role (Name) VALUES (#{name});
+        <selectKey keyProperty="id" resultType="int" order="AFTER">
+            select last_insert_id() as id
+        </selectKey>
+    </insert>
+
+    <select id="getById" parameterType="int" resultMap="role_result">
+        SELECT * FROM role WHERE idRole = #{id};
+    </select>
+
+    <select id="getAll" resultMap="role_result">
+        SELECT * FROM role;
+    </select>
+
+    <update id="update" parameterType="Role">
+        UPDATE role SET Name = #{name}
+        WHERE idRole = #{id};
+    </update>
+
+    <delete id="deleteById" parameterType="int">
+        DELETE FROM role WHERE idRole = #{id};
+    </delete>
+
+    <resultMap id="role_result" type="Role">
+        <result property="id" column="idRole"/>
+        <result property="name" column="Name"/>
+    </resultMap>
+
+</mapper>
