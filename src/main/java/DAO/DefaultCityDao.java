@@ -1,7 +1,7 @@
-package DAO;
+package main.java.DAO;
 
-import org.solvd.tableClasses.DefaultCity;
-import org.solvd.tableClasses.MyConnection;
+import main.java.org.solvd.tableClasses.DefaultCity;
+import main.java.org.solvd.tableClasses.MyConnection;
 
 import java.sql.*;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package org.solvd.tableClasses;
+package main.java.org.solvd.tableClasses;
 
 //import java.util.Date;
 import java.sql.Date;

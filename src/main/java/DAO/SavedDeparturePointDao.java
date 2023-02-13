@@ -1,7 +1,7 @@
-package DAO;
+package main.java.DAO;
 
-import org.solvd.tableClasses.MyConnection;
-import org.solvd.tableClasses.SavedDeparturePoint;
+import main.java.org.solvd.tableClasses.MyConnection;
+import main.java.org.solvd.tableClasses.SavedDeparturePoint;
 
 import java.sql.*;
 import java.util.ArrayList;

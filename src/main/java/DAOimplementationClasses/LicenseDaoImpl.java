@@ -1,7 +1,7 @@
-package DAOimplementationClasses;
+package main.java.DAOimplementationClasses;
 
-import DAO.LicenseDao;
-import org.solvd.tableClasses.License;
+import main.java.DAO.LicenseDao;
+import main.java.org.solvd.tableClasses.License;
 
 import java.sql.Date;
 import java.sql.SQLException;

@@ -1,7 +1,7 @@
-package DAOimplementationClasses;
+package main.java.DAOimplementationClasses;
 
-import DAO.CarDao;
-import org.solvd.tableClasses.Car;
+import main.java.DAO.CarDao;
+import main.java.org.solvd.tableClasses.Car;
 
 import java.sql.SQLException;
 

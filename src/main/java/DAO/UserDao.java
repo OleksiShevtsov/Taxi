@@ -1,7 +1,6 @@
 package main.java.DAO;
 
-import org.apache.ibatis.annotations.Mapper;
-import org.solvd.tableClasses.MyConnection;
+import main.java.org.solvd.tableClasses.MyConnection;
 import main.java.org.solvd.tableClasses.User;
 
 import java.sql.*;
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class UserDao extends DAO.MySqlDao implements DAO.IBaseDao<User> {
+public class UserDao extends MySqlDao implements IBaseDao<User> {
     private List<User> users;
     Connection connection;
     private final static String GET_USER_BY_ID = "SELECT * FROM Users WHERE idUsers = ";

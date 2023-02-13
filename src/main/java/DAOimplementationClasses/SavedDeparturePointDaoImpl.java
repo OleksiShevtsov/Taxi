@@ -1,8 +1,7 @@
-package DAOimplementationClasses;
+package main.java.DAOimplementationClasses;
 
-import DAO.SavedDeparturePointDao;
-import org.solvd.tableClasses.SavedDeparturePoint;
-import org.solvd.tableClasses.SavedDestinationPoint;
+import main.java.DAO.SavedDeparturePointDao;
+import main.java.org.solvd.tableClasses.SavedDeparturePoint;
 
 import java.sql.SQLException;
 

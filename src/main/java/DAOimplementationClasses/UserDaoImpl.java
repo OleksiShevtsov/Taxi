@@ -1,4 +1,4 @@
-package DAOimplementationClasses;
+package main.java.DAOimplementationClasses;
 
 import main.java.DAO.UserDao;
 import main.java.org.solvd.tableClasses.User;

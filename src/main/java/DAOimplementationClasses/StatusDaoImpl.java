@@ -1,7 +1,7 @@
-package DAOimplementationClasses;
+package main.java.DAOimplementationClasses;
 
-import DAO.StatusDao;
-import org.solvd.tableClasses.Status;
+import main.java.DAO.StatusDao;
+import main.java.org.solvd.tableClasses.Status;
 
 import java.sql.SQLException;
 

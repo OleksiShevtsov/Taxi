@@ -1,7 +1,7 @@
-package DAOimplementationClasses;
+package main.java.DAOimplementationClasses;
 
-import DAO.PhoneNumberDao;
-import org.solvd.tableClasses.PhoneNumber;
+import main.java.DAO.PhoneNumberDao;
+import main.java.org.solvd.tableClasses.PhoneNumber;
 
 import java.sql.SQLException;
 

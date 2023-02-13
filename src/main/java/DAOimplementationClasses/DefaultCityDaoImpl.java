@@ -1,7 +1,7 @@
-package DAOimplementationClasses;
+package main.java.DAOimplementationClasses;
 
-import DAO.DefaultCityDao;
-import org.solvd.tableClasses.DefaultCity;
+import main.java.DAO.DefaultCityDao;
+import main.java.org.solvd.tableClasses.DefaultCity;
 
 import java.sql.SQLException;
 

@@ -1,7 +1,7 @@
-package DAOimplementationClasses;
+package main.java.DAOimplementationClasses;
 
-import DAO.OrderDao;
-import org.solvd.tableClasses.Order;
+import main.java.DAO.OrderDao;
+import main.java.org.solvd.tableClasses.Order;
 
 import java.sql.SQLException;
 

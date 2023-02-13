@@ -1,4 +1,4 @@
-package org.solvd.tableClasses;
+package main.java.org.solvd.tableClasses;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;

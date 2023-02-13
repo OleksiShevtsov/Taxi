@@ -1,4 +1,4 @@
-package org.solvd.tableClasses;
+package main.java.org.solvd.tableClasses;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
